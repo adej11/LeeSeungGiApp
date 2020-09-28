@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lee Seung Gi</string>
+      <string name="image_description">image</string>
+       <string name="favorite">Fav</string>
+    <string name="text_primary">title</string>
+    <string name="release_date">Release Date</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="description">Description</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="performance">Performance</string>
+    <string name="track">Track List</string>
+    <string name="biography">Biography</string>
+    <string name="profile">Profile</string>
+    <string name="name">name</string>
+    <string name="music">Album</string>
+    <string name="cast">Cast</string>
+
+</resources>
