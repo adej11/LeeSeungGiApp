@@ -23,7 +23,6 @@ class SeunggiShowRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : ImplSeunggiShowRepository {
-
     override fun getAllShows(): Flow<Resource<List<SeunggiShow>>> =
         object : NetworkBoundResource<List<SeunggiShow>, List<SeunggiShowResponse>>() {
             override fun loadFromDB(): Flow<List<SeunggiShow>> {

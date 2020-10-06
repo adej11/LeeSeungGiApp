@@ -3,7 +3,6 @@ package app.android.ad.addev.com.favorite.favorite
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +36,7 @@ class FavoriteActivity : AppCompatActivity() {
             )
             .build()
             .inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
         setSupportActionBar(toolbar)
@@ -69,9 +69,7 @@ class FavoriteActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         window.statusBarColor = Color.TRANSPARENT
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-          return true
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
