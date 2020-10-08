@@ -11,7 +11,6 @@ import dagger.hilt.android.components.ApplicationComponent
 @EntryPoint
 @InstallIn(ApplicationComponent::class)
 interface DfmDependencies {
-   // fun provideLeeSeungGiUseCase(): SeunggiShowUseCase
     fun provideRepository(): ImplSeunggiShowRepository
     fun provideInt(): SeunggiShowInteractor
     fun provideDatabase(): SeunggiDatabase

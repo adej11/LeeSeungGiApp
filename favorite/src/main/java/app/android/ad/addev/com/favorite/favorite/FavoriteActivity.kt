@@ -77,7 +77,6 @@ class FavoriteActivity : AppCompatActivity() {
                 this.finish()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

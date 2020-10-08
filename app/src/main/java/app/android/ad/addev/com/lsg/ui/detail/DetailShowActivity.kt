@@ -34,10 +34,12 @@ class DetailShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
         seunggiShow = intent.getParcelableExtra(SHOW_ID)
         val id = seunggiShow?.id
+
         setSupportActionBar(toolbar)
         toolbar.setTitleTextColor(Color.WHITE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
         seunggiShow?.let { setData(it) }
         id?.let { seunggiShow?.media_type?.let { it1 -> detailViewModel.init(it, it1) } }
         detailViewModel.cast?.observe(this, { castsList ->
