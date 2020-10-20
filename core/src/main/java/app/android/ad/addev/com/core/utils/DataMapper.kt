@@ -117,6 +117,13 @@ object DataMapper {
             )
         }
 
+    fun mapEntitiesToDomainBanner(input: List<BannerEntity>): List<SliderItem> =
+        input.map {
+            SliderItem(
+                image = it.urlImage
+            )
+        }
+
     fun mapEntitiesToDomainTrack(input: List<TrackEntity>): List<Track> =
         input.map {
             Track(
@@ -168,7 +175,18 @@ object DataMapper {
             )
             castList.add(castShow)
         }
-
         return castList
+    }
+
+    fun mapResponsesToEntitiesBanner(input: List<BannerResponse>): List<BannerEntity> {
+        val albumList = ArrayList<BannerEntity>()
+        input.map {
+            val bannerEntity = BannerEntity(
+                0,
+                urlImage = it.urlImage
+            )
+            albumList.add(bannerEntity)
+        }
+        return albumList
     }
 }

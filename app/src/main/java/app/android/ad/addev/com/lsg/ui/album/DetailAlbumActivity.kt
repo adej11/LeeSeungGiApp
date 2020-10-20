@@ -2,7 +2,6 @@ package app.android.ad.addev.com.lsg.ui.album
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
@@ -19,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail_album.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailAlbumActivity : AppCompatActivity() {
@@ -56,6 +56,7 @@ class DetailAlbumActivity : AppCompatActivity() {
                     }
                     is Resource.Error -> {
                         progress_bar.visibility = View.GONE
+                        Timber.tag("lsg").d(tracks.message)
                     }
                 }
             }
@@ -67,9 +68,7 @@ class DetailAlbumActivity : AppCompatActivity() {
             adapter = trackAdapter
         }
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return true
-    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {

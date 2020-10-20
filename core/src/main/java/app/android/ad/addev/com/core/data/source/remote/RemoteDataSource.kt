@@ -1,6 +1,5 @@
 package app.android.ad.addev.com.core.data.source.remote
 
-import android.util.Log
 import app.android.ad.addev.com.core.data.source.remote.network.ApiResponse
 import app.android.ad.addev.com.core.data.source.remote.network.ApiService
 import app.android.ad.addev.com.core.data.source.remote.response.CastShowResponse
@@ -10,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,7 +29,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.tag(e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -46,9 +46,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.tag(e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
+
 }
 

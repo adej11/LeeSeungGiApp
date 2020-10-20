@@ -19,7 +19,7 @@
             android:id="@+id/iv_item_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/white"
+            android:background="@color/toolbarTransparent"
             android:contentDescription="@string/image_description"
             android:scaleType="matrix"
             app:layout_constraintDimensionRatio="9:12"

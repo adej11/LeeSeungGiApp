@@ -17,6 +17,7 @@ import app.android.ad.addev.com.core.utils.Constant
 import app.android.ad.addev.com.lsg.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AlbumFragment : Fragment() {
@@ -51,6 +52,7 @@ class AlbumFragment : Fragment() {
                         }
                         is Resource.Error -> {
                             progress_bar_playing.visibility = View.GONE
+                            Timber.tag("lsg").d(album.message)
                         }
                     }
                 }

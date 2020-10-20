@@ -8,13 +8,14 @@ import app.android.ad.addev.com.core.R
 import app.android.ad.addev.com.core.domain.model.Cast
 import app.android.ad.addev.com.core.utils.Constant.Companion.URL_IMG_ADAPTER
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.items_cast.view.*
-import java.util.ArrayList
+import java.util.*
 
 class CastShowAdapter : RecyclerView.Adapter<CastShowAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Cast>()
-    var onItemClick: ((Cast) -> Unit)? = null
+    private var onItemClick: ((Cast) -> Unit)? = null
 
     fun setData(newListData: List<Cast>?) {
         if (newListData == null) return
@@ -30,23 +31,15 @@ class CastShowAdapter : RecyclerView.Adapter<CastShowAdapter.ListViewHolder>() {
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = listData[position]
-        holder.bind(data)
-    }
-
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(data: Cast) {
-            with(itemView) {
-                Glide.with(itemView.context)
-                    .load(URL_IMG_ADAPTER + data.profile_path)
-                    .into(iv_item_image)
-                tv_character.text = data.character 
-            }
-        }
-
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
-            }
+        Glide.with(holder.itemView)
+            .load(URL_IMG_ADAPTER + data.profile_path)
+            .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
+            .into(holder.itemView.iv_item_image)
+        holder.itemView.tv_character.text = data.name
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(listData[position])
         }
     }
+
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

@@ -24,6 +24,9 @@ class LocalDataSource @Inject constructor(private val seunggiShowDao: SeunggiSho
     suspend fun insertAlbum(albumList: List<AlbumEntity>) =
         seunggiShowDao.insertAlbum(albumList)
 
+    suspend fun insertBanner(bannerList: List<BannerEntity>) =
+        seunggiShowDao.insertBanner(bannerList)
+
     suspend fun insertDetailShow(show: List<CastEntity>) =
         seunggiShowDao.insertDetailShow(show)
 
@@ -41,5 +44,7 @@ class LocalDataSource @Inject constructor(private val seunggiShowDao: SeunggiSho
         seunggiShowDao.getDetailAlbum(albumId)
 
     fun getProfile(): Flow<List<ProfileEntity>> = seunggiShowDao.getProfie()
+
+    fun getAllBanners(): Flow<List<BannerEntity>> = seunggiShowDao.getAllBanners()
 
 }

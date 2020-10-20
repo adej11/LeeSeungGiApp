@@ -3,7 +3,6 @@ package app.android.ad.addev.com.favorite.favorite
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +15,7 @@ import app.android.ad.addev.com.lsg.di.DfmDependencies
 import app.android.ad.addev.com.lsg.ui.detail.DetailShowActivity
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.android.synthetic.main.activity_favorite.*
+import kotlinx.android.synthetic.main.activity_favorite.progress_bar_playing
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
@@ -51,7 +51,8 @@ class FavoriteActivity : AppCompatActivity() {
         favoriteViewModel.seunggiShow.observe(this, { favoriteShow ->
             if (favoriteShow != null) {
                 seunggiAdapter.setData(favoriteShow)
-                progress_bar_playing.visibility =
+                progress_bar_playing.visibility = View.GONE
+                empty_box.visibility =
                     if (favoriteShow.isNotEmpty()) View.GONE else View.VISIBLE
             }
         })
@@ -70,14 +71,4 @@ class FavoriteActivity : AppCompatActivity() {
         window.statusBarColor = Color.TRANSPARENT
     }
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                this.finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

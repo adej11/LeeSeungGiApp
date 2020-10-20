@@ -8,8 +8,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.android.ad.addev.com.core.data.Resource
 import app.android.ad.addev.com.core.domain.model.SeunggiShow
 import app.android.ad.addev.com.core.ui.CastShowAdapter
@@ -21,14 +21,17 @@ import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailShowActivity : AppCompatActivity() {
+
     private val detailViewModel: DetailViewModel by viewModels()
     private val castShowAdapter = CastShowAdapter()
     private var menuItem: Menu? = null
     private var seunggiShow: SeunggiShow? = null
     private var isFavorite: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -53,6 +56,7 @@ class DetailShowActivity : AppCompatActivity() {
                     }
                     is Resource.Error -> {
                         progress_bar_playing.visibility = View.GONE
+                        Timber.tag("lsg").d(castsList.message)
                     }
                 }
             }
@@ -117,9 +121,9 @@ class DetailShowActivity : AppCompatActivity() {
                 false
             )
             rv_cast.setHasFixedSize(true)
-            val dividerItemDecoration =
-                DividerItemDecoration(rv_cast.context, DividerItemDecoration.VERTICAL)
-            rv_cast.addItemDecoration(dividerItemDecoration)
+            val staggeredGridLayoutManager =
+                StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+            rv_cast.layoutManager = staggeredGridLayoutManager
             adapter = castShowAdapter
             rv_cast.adapter = adapter
         }

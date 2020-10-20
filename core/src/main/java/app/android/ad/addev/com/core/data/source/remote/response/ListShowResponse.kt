@@ -12,5 +12,7 @@ data class ListShowResponse(
     @field:SerializedName("track")
     val listTrack: List<TrackResponse>,
     @field:SerializedName("profile")
-    val profile: List<ProfileResponse>
+    val profile: List<ProfileResponse>,
+    @field:SerializedName("banner")
+    val banner: List<BannerResponse>
 )

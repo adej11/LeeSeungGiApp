@@ -1,12 +1,9 @@
 package app.android.ad.addev.com.core.data.source.local.entity
 
-import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 @Entity(tableName = "cast_show")
 data class CastEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
@@ -20,4 +17,4 @@ data class CastEntity(
     var name: String = "",
     @ColumnInfo(name = "profile_path")
     var profilePath: String? = ""
-) : Parcelable
+)

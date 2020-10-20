@@ -11,7 +11,7 @@ import java.util.*
 
 class TrackAdapter : RecyclerView.Adapter<TrackAdapter.ListViewHolder>() {
     private var listData = ArrayList<Track>()
-    var onItemClick: ((Track) -> Unit)? = null
+    private var onItemClick: ((Track) -> Unit)? = null
 
     fun setData(newListData: List<Track>?) {
         if (newListData == null) return
@@ -21,26 +21,19 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.items_track, parent, false))
+        ListViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.items_track, parent, false)
+        )
 
     override fun getItemCount() = listData.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = listData[position]
-        holder.bind(data)
-    }
-
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(data: Track) {
-            with(itemView) {
-                tv_song.text=data.song
-            }
-        }
-
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
-            }
+        holder.itemView.tv_song.text = data.song
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(listData[position])
         }
     }
+
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

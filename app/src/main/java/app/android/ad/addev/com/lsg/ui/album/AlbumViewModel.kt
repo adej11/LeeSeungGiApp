@@ -14,5 +14,4 @@ class AlbumViewModel @ViewModelInject constructor(private val seunggiShowUseCase
     fun init(id: String ) {
         tracks = seunggiShowUseCase.getAllTracks(id).asLiveData()
     }
-
 }

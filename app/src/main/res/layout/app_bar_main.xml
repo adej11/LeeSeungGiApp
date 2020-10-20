@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity"
+    tools:ignore="InconsistentLayout">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -13,12 +15,35 @@
         android:fitsSystemWindows="true"
         android:translationZ="2dp" />
 
-    <ImageView
-        android:id="@+id/text_detail_image"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/progress_bar_playing"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:background="@drawable/visual"
-        android:contentDescription="@string/image_description"
-        android:scaleType="centerCrop" />
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_auto_start="true">
 
+        <View
+            android:id="@+id/iv_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/colorShimmer" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorEnabled="true"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="5dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#FFF"
+        app:sliderScrollTimeInSec="3" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

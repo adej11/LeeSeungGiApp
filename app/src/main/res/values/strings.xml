@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Lee Seung Gi</string>
-      <string name="image_description">image</string>
-       <string name="favorite">Fav</string>
+    <string name="image_description">image</string>
+    <string name="favorite">Fav</string>
     <string name="text_primary">title</string>
     <string name="release_date">Release Date</string>
     <string name="synopsis">Synopsis</string>

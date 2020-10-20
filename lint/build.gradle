@@ -14,5 +14,3 @@ jar {
         attributes("Lint-Registry-v2": "app.android.ad.addev.com.lint.MyIssueRegistry")
     }
 }
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"

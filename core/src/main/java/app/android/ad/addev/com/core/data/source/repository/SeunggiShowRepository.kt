@@ -126,5 +126,23 @@ class SeunggiShowRepository @Inject constructor(
         val seungiShowEntity = DataMapper.mapDomainToEntity(sg)
         appExecutors.diskIO().execute { localDataSource.setFavoriteShow(seungiShowEntity, state) }
     }
+
+    override fun getAllBanners(): Flow<Resource<List<SliderItem>>> =
+        object : NetworkBoundResource<List<SliderItem>, List<BannerResponse>>() {
+            override fun loadFromDB(): Flow<List<SliderItem>> {
+                return localDataSource.getAllBanners()
+                    .map { DataMapper.mapEntitiesToDomainBanner(it) }
+            }
+
+            override fun shouldFetch(data: List<SliderItem>?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<List<BannerResponse>>> =
+                remoteDataSourceAlbum.getBanner()
+
+            override suspend fun saveCallResult(data: List<BannerResponse>) {
+                val bannerList = DataMapper.mapResponsesToEntitiesBanner(data)
+                localDataSource.insertBanner(bannerList)
+            }
+        }.asFlow()
 }
 

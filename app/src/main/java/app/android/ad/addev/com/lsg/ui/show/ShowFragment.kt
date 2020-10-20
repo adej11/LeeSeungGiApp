@@ -18,6 +18,7 @@ import app.android.ad.addev.com.lsg.R
 import app.android.ad.addev.com.lsg.ui.detail.DetailShowActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ShowFragment : Fragment() {
@@ -29,15 +30,16 @@ class ShowFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         if (activity != null) {
             val seunggiAdapter = SeunggiShowAdapter()
             seunggiAdapter.onItemClick = { selectedData ->
-                 val intent = Intent(activity, DetailShowActivity::class.java)
-                 intent.putExtra(SHOW_ID, selectedData)
-                  startActivity(intent)
+                val intent = Intent(activity, DetailShowActivity::class.java)
+                intent.putExtra(SHOW_ID, selectedData)
+                startActivity(intent)
             }
 
             showViewModel.seunggiShow.observe(viewLifecycleOwner, { seunggiShow ->
@@ -50,6 +52,7 @@ class ShowFragment : Fragment() {
                         }
                         is Resource.Error -> {
                             progress_bar_playing.visibility = View.GONE
+                            Timber.tag("lsg").d(seunggiShow.message)
                         }
                     }
                 }

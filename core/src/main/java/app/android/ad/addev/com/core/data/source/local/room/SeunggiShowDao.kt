@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SeunggiShowDao {
 
-    @Query("SELECT * FROM seunggi_show")
+    @Query("SELECT * FROM seunggi_show ")
     fun getAllShows(): Flow<List<SeunggiShowEntity>>
 
     @Query("SELECT * FROM seunggi_show where isFavorite = 1")
@@ -42,4 +42,10 @@ interface SeunggiShowDao {
 
     @Query("SELECT * FROM track where album_id= :albumId ")
     fun getDetailAlbum(albumId: String): Flow<List<TrackEntity>>
+
+    @Query("SELECT * FROM banner")
+    fun getAllBanners(): Flow<List<BannerEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBanner(bannerEntity: List<BannerEntity>)
 }

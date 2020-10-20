@@ -14,6 +14,7 @@ import app.android.ad.addev.com.core.domain.model.Profile
 import app.android.ad.addev.com.lsg.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_profile.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -39,7 +40,7 @@ class ProfileFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         progress_bar.visibility = View.GONE
-
+                        Timber.tag("lsg").d(profile.message)
                     }
                 }
             }

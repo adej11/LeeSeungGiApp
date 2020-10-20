@@ -8,7 +8,6 @@ import app.android.ad.addev.com.core.R
 import app.android.ad.addev.com.core.domain.model.Album
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.items_list_album.view.*
-import kotlinx.android.synthetic.main.items_list_show.view.iv_item_image
 import java.util.*
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ListViewHolder>() {
@@ -23,29 +22,22 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.items_list_album, parent, false))
+        ListViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.items_list_album, parent, false)
+        )
 
     override fun getItemCount() = listData.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = listData[position]
-        holder.bind(data)
-    }
-
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(data: Album) {
-            with(itemView) {
-                Glide.with(itemView.context)
-                    .load(data.image)
-                    .into(iv_item_image)
-                itemView.tv_item_title.text=data.name
-            }
-        }
-
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
-            }
+        Glide.with(holder.itemView)
+            .load(data.image)
+            .into(holder.itemView.iv_item_image)
+        holder.itemView.tv_item_title.text = data.name
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(listData[position])
         }
     }
+
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

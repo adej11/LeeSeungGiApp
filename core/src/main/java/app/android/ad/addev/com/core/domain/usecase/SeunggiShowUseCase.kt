@@ -11,5 +11,6 @@ interface SeunggiShowUseCase {
     fun getAllTracks(albumId:String): Flow <Resource<List<Track>>>
     fun getCastShow(movieId:String , mediaType:String): Flow <Resource<List<Cast>>>
     fun getFavoriteShow(): Flow<List<SeunggiShow>>
-    fun setFavoriteShow(seunggiShow: SeunggiShow , state: Boolean)
+    fun getBanner(): Flow<Resource<List<SliderItem>>>
+    fun setFavoriteShow(seunggiShow: SeunggiShow, state: Boolean)
 }

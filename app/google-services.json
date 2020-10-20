@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1085753641226",
+    "firebase_url": "https://leeseunggiapp.firebaseio.com",
+    "project_id": "leeseunggiapp",
+    "storage_bucket": "leeseunggiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085753641226:android:fe18ecd3f306846fcd12f3",
+        "android_client_info": {
+          "package_name": "app.android.ad.addev.com.lsg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085753641226-bcisrej8idura2p9e8dth49c750nth55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh_aoo7owfzJ2x5atb1m09S9y3lFSKWtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085753641226-bcisrej8idura2p9e8dth49c750nth55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

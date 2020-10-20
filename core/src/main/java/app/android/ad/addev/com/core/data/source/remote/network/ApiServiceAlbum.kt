@@ -8,5 +8,4 @@ interface ApiServiceAlbum {
     @GET("{path_url}")
     suspend fun getData(@Path("path_url") path_url: String
     ): ListShowResponse
-
 }
