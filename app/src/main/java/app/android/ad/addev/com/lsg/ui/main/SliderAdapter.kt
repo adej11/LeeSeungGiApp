@@ -1,10 +1,13 @@
 package app.android.ad.addev.com.lsg.ui.main
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import app.android.ad.addev.com.core.domain.model.SliderItem
+import app.android.ad.addev.com.core.utils.Constant.Companion.URL_LSG
 import app.android.ad.addev.com.lsg.R
 import com.bumptech.glide.Glide
 import com.smarteist.autoimageslider.SliderViewAdapter
@@ -26,9 +29,12 @@ class SliderAdapter :
     override fun onBindViewHolder(viewHolder: SliderAdapterHolder, position: Int) {
         val sliderItem: SliderItem = mSliderItems[position]
         Glide.with(viewHolder.itemView)
-            .load("https://addevstudio.com/api/" + sliderItem.image)
+            .load(URL_LSG + sliderItem.image)
             .fitCenter()
             .into(viewHolder.imageViewBackground)
+        viewHolder.itemView.setOnClickListener {
+
+        }
     }
 
     override fun getCount(): Int {

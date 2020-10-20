@@ -12,6 +12,12 @@
     <string name="biography">Biography</string>
     <string name="profile">Profile</string>
     <string name="name">name</string>
+    <string name="name_text">Name : %s</string>
+    <string name="hangul_text">Hangul : %s</string>
+    <string name="birthdate_text">Birthdate : %s</string>
+    <string name="Height_text">Height : %s</string>
+    <string name="ig_text">Instagram : %s</string>
+    <string name="web_text">Website : %s</string>
     <string name="music">Album</string>
     <string name="cast">Cast</string>
 

@@ -57,12 +57,12 @@ class ProfileFragment : Fragment() {
         return false
     }
     private fun setData(data: Profile) {
-        textName.text = "Name\t:" + data.name
-        textHangul.text = "Hangul\t:" + data.hangul
-        textDate.text = "Birthdate\t:" + data.birthdate
-        textHeight.text = "Height\t:" + data.height
-        textInstagram.text = "Instagram\t:" + data.instagram
-        textWebsite.text = "Website :" + data.website
+        textName.text = getString(R.string.name_text, data.name)
+        textHangul.text = getString(R.string.hangul_text, data.hangul)
+        textDate.text = getString(R.string.birthdate_text, data.birthdate)
+        textHeight.text = getString(R.string.Height_text, data.height)
+        textInstagram.text = getString(R.string.ig_text, data.instagram)
+        textWebsite.text = getString(R.string.web_text, data.website)
         text_description.text = data.biography
     }
 }
