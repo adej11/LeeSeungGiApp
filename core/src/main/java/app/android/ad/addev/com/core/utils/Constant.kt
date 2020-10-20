@@ -6,7 +6,6 @@ class Constant {
         const val URL_IMG_DETAIL = "https://image.tmdb.org/t/p/w342"
         const val SHOW_ID = "SHOW_ID"
         const val ALBUM = "ALBUM LSG"
-        const val TAG = "lsg"
         const val MY_FAVORITE = "MY FAVORITES"
         const val APP_KEY = "94923667dddfb4d9c55abf3d89a018ac"
         const val URL_MOVIE = "https://api.themoviedb.org/3/"

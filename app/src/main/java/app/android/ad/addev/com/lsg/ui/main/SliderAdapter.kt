@@ -1,11 +1,9 @@
 package app.android.ad.addev.com.lsg.ui.main
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import app.android.ad.addev.com.core.domain.model.SliderItem
 import app.android.ad.addev.com.core.utils.Constant.Companion.URL_LSG
 import app.android.ad.addev.com.lsg.R
